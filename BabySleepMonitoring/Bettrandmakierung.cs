@@ -60,20 +60,32 @@ namespace BabySleepMonitoring
                 int imageX = image.Width;
                 int BoxY = PictureBoxMakierung.Height;
                 int BoxX = PictureBoxMakierung.Width;
+                double BoxVer = (double)BoxX / (double)BoxY;
+                double imageVer = (double)imageX / (double)imageY;
 
-                if (Math.Abs(BoxX / BoxY) < Math.Abs(imageX / imageY))
+                if (BoxVer < imageVer)  //oben unten 
+                {
+                    int yWert = 0;
+                    int xWert = 0;
+                    var Punkt = new Point(xWert, yWert);
+                    eckpunkte.Add(Punkt);
+                }
+                else if (BoxVer > imageVer) //rechts links
                 {
 
+                    int yWert = 0;
+                    int xWert = 0;
+                    var Punkt = new Point(xWert, yWert);
+                    eckpunkte.Add(Punkt);
                 }
-                if (Math.Abs(BoxX - BoxY) > Math.Abs(imageX - imageY))
+                else
                 {
-
+                    var Punkt = new Point(x, y);
+                    eckpunkte.Add(Punkt);
                 }
 
 
-                var Punkt = new Point(x, y);
-
-                eckpunkte.Add(Punkt);
+                
 
                 Bitmap ImageClone = new Bitmap(image);
 

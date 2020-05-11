@@ -76,7 +76,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(129, 141);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "Setzen sie bitte 3 Punkte \r\nfür die Breite und die Dicke";
+            this.textBox1.Text = "Setzen sie bitte 3 Punkte \r\nfür die Breite und die Dicke.\r\n\r\nMit Start \"Makierung" +
+    "\" können sie die Makierung starten";
             this.textBox1.Visible = false;
             this.textBox1.VisibleChanged += new System.EventHandler(this.textBox1_VisibleChanged);
             // 
