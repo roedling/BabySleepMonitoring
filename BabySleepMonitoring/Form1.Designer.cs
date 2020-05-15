@@ -70,8 +70,8 @@
             // SplitContainer1.Panel2
             // 
             this.SplitContainer1.Panel2.Controls.Add(this.SplitContainer2);
-            this.SplitContainer1.Size = new System.Drawing.Size(801, 553);
-            this.SplitContainer1.SplitterDistance = 226;
+            this.SplitContainer1.Size = new System.Drawing.Size(853, 553);
+            this.SplitContainer1.SplitterDistance = 240;
             this.SplitContainer1.TabIndex = 1;
             // 
             // textBox3
@@ -118,8 +118,8 @@
             this.SplitContainer2.Location = new System.Drawing.Point(0, 0);
             this.SplitContainer2.Name = "SplitContainer2";
             this.SplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.SplitContainer2.Size = new System.Drawing.Size(571, 553);
-            this.SplitContainer2.SplitterDistance = 247;
+            this.SplitContainer2.Size = new System.Drawing.Size(609, 553);
+            this.SplitContainer2.SplitterDistance = 263;
             this.SplitContainer2.TabIndex = 0;
             // 
             // openFileDialog1
@@ -130,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 553);
+            this.ClientSize = new System.Drawing.Size(853, 553);
             this.Controls.Add(this.SplitContainer1);
             this.Name = "Form1";
             this.Text = "BabySleepMonitoring";

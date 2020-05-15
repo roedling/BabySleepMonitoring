@@ -21,11 +21,12 @@ namespace BabySleepMonitoring
             InitializeComponent();
         }
 
-        private string path;
+
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             m_Bettrandmakierung = new Bettrandmakierung();
             SplitContainer2.Panel1.Controls.Add(m_Bettrandmakierung);
             m_Bettrandmakierung.Dock = DockStyle.Fill;
@@ -38,12 +39,10 @@ namespace BabySleepMonitoring
         private void ButtonOrdnerWählen_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                path = Path.GetDirectoryName(openFileDialog1.FileName);
-
+            {                     
                 m_Bettrandmakierung.fillList_path = openFileDialog1.FileName;
+                m_Ueberpruefen.ueberpruefen_path = openFileDialog1.FileName;
 
-           
             }
         }
 

@@ -18,14 +18,18 @@ namespace BabySleepMonitoring
             InitializeComponent();
         }
 
-
+        private string folder;
+        private Bitmap currentPic = null;
+        private int i = 50;
+        private Timer timer;
         private string[] files;
         private string path;
-        public string fillList_path
+        public string ueberpruefen_path
         {
             set
             {
                 path = value;
+                currentPic = new Bitmap(path);
             }
         }
 
@@ -33,17 +37,45 @@ namespace BabySleepMonitoring
         {
             if(path != null)
             {
-                files = Directory.GetFiles(path);
-                
-                for(int i = 0; i< files.Count(); i++)
+                folder = Path.GetDirectoryName(path);
+                files = Directory.GetFiles(folder);
+
+                timer = new Timer();
+                timer.Tick += new EventHandler(check);
+                timer.Interval = 2000; // in miliseconds
+                timer.Start();
+            }
+        }
+        private void check(object sender, EventArgs e)
+        {
+            if (i < files.Count())
+            {
+                if (pictureBox1.Image != null)
                 {
 
                 }
-
-
-
-
+                TextBox.Text = files[i];
+                if (currentPic != null)
+                {
+                    currentPic.Dispose();
+                }
+                currentPic = new Bitmap(files[i]);
+                pictureBox1.Image = currentPic;
+                i++;
             }
+            else
+                timer.Stop();
+
+        }
+
+        private bool Bauchlage()
+        {
+
+        }
+
+        private bool Rand()
+        {
+
         }
     }
 }
