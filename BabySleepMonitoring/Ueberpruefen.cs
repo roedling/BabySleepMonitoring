@@ -20,7 +20,7 @@ namespace BabySleepMonitoring
 
         private string folder;
         private Bitmap currentPic = null;
-        private int i = 50;
+        private int i = 0;
         private Timer timer;
         private string[] files;
         private string path;
@@ -68,12 +68,12 @@ namespace BabySleepMonitoring
 
         }
 
-        private bool Bauchlage()
+        private void Bauchlage()
         {
 
         }
 
-        private bool Rand()
+        private void Rand()
         {
 
         }

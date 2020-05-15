@@ -16,12 +16,14 @@ namespace BabySleepMonitoring
 
         private Bettrandmakierung m_Bettrandmakierung = null;
         private Ueberpruefen m_Ueberpruefen = null;
+        
+
         public Form1()
         {
             InitializeComponent();
         }
 
-
+        
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,16 +32,26 @@ namespace BabySleepMonitoring
             m_Bettrandmakierung = new Bettrandmakierung();
             SplitContainer2.Panel1.Controls.Add(m_Bettrandmakierung);
             m_Bettrandmakierung.Dock = DockStyle.Fill;
+            m_Bettrandmakierung.Visible = false;
 
             m_Ueberpruefen = new Ueberpruefen();
             SplitContainer2.Panel2.Controls.Add(m_Ueberpruefen);
             m_Ueberpruefen.Dock = DockStyle.Fill;
+            m_Ueberpruefen.Visible = false;
+
+            m_Bettrandmakierung.Test += new TestFunction(nav_Text);
+        }
+
+        private void nav_Text()
+        {
+            m_Ueberpruefen.Visible = true;
         }
 
         private void ButtonOrdnerWählen_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {                     
+            {
+                m_Bettrandmakierung.Visible = true;
                 m_Bettrandmakierung.fillList_path = openFileDialog1.FileName;
                 m_Ueberpruefen.ueberpruefen_path = openFileDialog1.FileName;
 
@@ -50,5 +62,6 @@ namespace BabySleepMonitoring
         {
 
         }
+
     }
 }

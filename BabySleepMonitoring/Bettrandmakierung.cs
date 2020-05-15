@@ -10,12 +10,15 @@ using System.Windows.Forms;
 
 namespace BabySleepMonitoring
 {
+    public delegate void TestFunction();
     public partial class Bettrandmakierung : UserControl
     {
         public Bettrandmakierung()
         {
             InitializeComponent();
         }
+
+        public event TestFunction Test;
 
         private Bitmap cloneImage = null;
         public List<Point> eckpunkte = new List<Point>(3);
@@ -117,6 +120,10 @@ namespace BabySleepMonitoring
                     PictureBoxMakierung.Image = cloneImage;
 
                     PictureBoxMakierung.Refresh();
+                    if(Test != null)
+                    {
+                        Test();
+                    }
                 }
             }
         }
