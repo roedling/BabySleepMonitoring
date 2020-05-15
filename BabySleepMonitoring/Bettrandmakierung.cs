@@ -18,7 +18,7 @@ namespace BabySleepMonitoring
         }
 
         private Bitmap cloneImage = null;
-        private List<Point> eckpunkte = new List<Point>(3);
+        public List<Point> eckpunkte = new List<Point>(3);
         private Bitmap image = null;
         int Checked = 0;
         private Point m_mouseStart = new Point(0, 0);
@@ -90,7 +90,7 @@ namespace BabySleepMonitoring
 
                 if (eckpunkte.Count == 2)
                 {
-                    Graphics g = this.CreateGraphics();
+                    Graphics g = CreateGraphics();
                     g = Graphics.FromImage(cloneImage);
                     Pen p = new Pen(Color.Red, 10);
                     Point point2 = new Point(eckpunkte[1].X, eckpunkte[0].Y);
@@ -103,7 +103,7 @@ namespace BabySleepMonitoring
                 if (eckpunkte.Count == 3)
                 {
 
-                    Graphics g = this.CreateGraphics();
+                    Graphics g = CreateGraphics();
                     g = Graphics.FromImage(cloneImage);
                     Pen p = new Pen(Color.Red, 10);
                     Point point2 = new Point(eckpunkte[1].X, eckpunkte[0].Y);
@@ -156,22 +156,6 @@ namespace BabySleepMonitoring
                     m_mouseCorrect.X = (int)((xImage * startImageProzent) / 100);
             }
         }
-        private void BildKoordianten()
-        {
-            double referenz = xImage / xImage;
-            double vergleich = xBox / yBox;
-
-            if (referenz < vergleich)
-            {
-                BildKoordinatenX();
-                BildKoordinatenY();
-            }
-            if (referenz > vergleich)
-            {
-                BildKoordinatenOX();
-                BildKoordinatenOY();
-            }
-        }
         private void BildKoordinatenOX()
         {
             if (PictureBoxMakierung.Image != null)
@@ -195,6 +179,11 @@ namespace BabySleepMonitoring
                     double startImageProzent = (100 * mausStart) / ih;
                     m_mouseCorrect.Y = (int)((yImage * startImageProzent) / 100);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

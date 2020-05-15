@@ -60,6 +60,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ueberpruefen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ueberpruefen.Designer.cs">
+      <DependentUpon>Ueberpruefen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Überprüfung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Überprüfung.Designer.cs">
+      <DependentUpon>Überprüfung.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Bettrandmakierung.resx">
       <DependentUpon>Bettrandmakierung.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +87,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ueberpruefen.resx">
+      <DependentUpon>Ueberpruefen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Überprüfung.resx">
+      <DependentUpon>Überprüfung.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

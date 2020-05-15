@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BabySleepMonitoring
 {
@@ -14,30 +15,41 @@ namespace BabySleepMonitoring
     {
 
         private Bettrandmakierung m_Bettrandmakierung = null;
+        private Ueberpruefen m_Ueberpruefen = null;
         public Form1()
         {
             InitializeComponent();
         }
+
+        private string path;
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
             m_Bettrandmakierung = new Bettrandmakierung();
             SplitContainer2.Panel1.Controls.Add(m_Bettrandmakierung);
             m_Bettrandmakierung.Dock = DockStyle.Fill;
+
+            m_Ueberpruefen = new Ueberpruefen();
+            SplitContainer2.Panel2.Controls.Add(m_Ueberpruefen);
+            m_Ueberpruefen.Dock = DockStyle.Fill;
         }
 
         private void ButtonOrdnerWählen_Click(object sender, EventArgs e)
         {
-            var filePath = string.Empty;
-
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                var fileStream = openFileDialog1.FileName;
+                path = Path.GetDirectoryName(openFileDialog1.FileName);
 
-                filePath = openFileDialog1.FileName;
+                m_Bettrandmakierung.fillList_path = openFileDialog1.FileName;
 
-                m_Bettrandmakierung.fillList_path = filePath;
+           
             }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
