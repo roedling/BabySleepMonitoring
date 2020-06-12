@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Bytescout.BarCodeReader;
 
 namespace BabySleepMonitoring
 {
@@ -53,7 +54,7 @@ namespace BabySleepMonitoring
             {
                 if (pictureBox1.Image != null)  //wenn Image geladen ist
                 {
-
+                    pictureBox1.Dispose();
                 }
                 TextBox.Text = files[i];  // file in entsprechender TextBox
                 if (currentPic != null)  // wenn picture vorhanden 
