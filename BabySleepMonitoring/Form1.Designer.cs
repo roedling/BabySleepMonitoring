@@ -33,14 +33,10 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.SplitContainer2 = new System.Windows.Forms.SplitContainer();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
             this.SplitContainer1.Panel1.SuspendLayout();
-            this.SplitContainer1.Panel2.SuspendLayout();
             this.SplitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer2)).BeginInit();
-            this.SplitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonOrdnerWählen
@@ -66,12 +62,8 @@
             this.SplitContainer1.Panel1.Controls.Add(this.textBox2);
             this.SplitContainer1.Panel1.Controls.Add(this.textBox1);
             this.SplitContainer1.Panel1.Controls.Add(this.ButtonOrdnerWählen);
-            // 
-            // SplitContainer1.Panel2
-            // 
-            this.SplitContainer1.Panel2.Controls.Add(this.SplitContainer2);
-            this.SplitContainer1.Size = new System.Drawing.Size(853, 553);
-            this.SplitContainer1.SplitterDistance = 240;
+            this.SplitContainer1.Size = new System.Drawing.Size(1209, 544);
+            this.SplitContainer1.SplitterDistance = 252;
             this.SplitContainer1.TabIndex = 1;
             // 
             // textBox3
@@ -79,7 +71,7 @@
             this.textBox3.BackColor = System.Drawing.SystemColors.Control;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(12, 470);
+            this.textBox3.Location = new System.Drawing.Point(12, 424);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(128, 71);
@@ -112,16 +104,6 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Baby Sleep Monitoring\r\n";
             // 
-            // SplitContainer2
-            // 
-            this.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.SplitContainer2.Name = "SplitContainer2";
-            this.SplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.SplitContainer2.Size = new System.Drawing.Size(609, 553);
-            this.SplitContainer2.SplitterDistance = 263;
-            this.SplitContainer2.TabIndex = 0;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -130,18 +112,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 553);
+            this.ClientSize = new System.Drawing.Size(1209, 544);
             this.Controls.Add(this.SplitContainer1);
             this.Name = "Form1";
             this.Text = "BabySleepMonitoring";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SplitContainer1.Panel1.ResumeLayout(false);
             this.SplitContainer1.Panel1.PerformLayout();
-            this.SplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).EndInit();
             this.SplitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer2)).EndInit();
-            this.SplitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -150,7 +129,6 @@
 
         private System.Windows.Forms.Button ButtonOrdnerWählen;
         private System.Windows.Forms.SplitContainer SplitContainer1;
-        private System.Windows.Forms.SplitContainer SplitContainer2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
