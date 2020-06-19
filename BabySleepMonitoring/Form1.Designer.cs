@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ButtonOrdnerWählen = new System.Windows.Forms.Button();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -42,9 +43,9 @@
             // ButtonOrdnerWählen
             // 
             this.ButtonOrdnerWählen.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonOrdnerWählen.Location = new System.Drawing.Point(55, 311);
+            this.ButtonOrdnerWählen.Location = new System.Drawing.Point(67, 252);
             this.ButtonOrdnerWählen.Name = "ButtonOrdnerWählen";
-            this.ButtonOrdnerWählen.Size = new System.Drawing.Size(114, 23);
+            this.ButtonOrdnerWählen.Size = new System.Drawing.Size(127, 40);
             this.ButtonOrdnerWählen.TabIndex = 0;
             this.ButtonOrdnerWählen.Text = "erstes Bild";
             this.ButtonOrdnerWählen.UseVisualStyleBackColor = true;
@@ -58,38 +59,37 @@
             // 
             // SplitContainer1.Panel1
             // 
-            this.SplitContainer1.Panel1.Controls.Add(this.textBox3);
+            this.SplitContainer1.Panel1.Controls.Add(this.textBox4);
             this.SplitContainer1.Panel1.Controls.Add(this.textBox2);
             this.SplitContainer1.Panel1.Controls.Add(this.textBox1);
             this.SplitContainer1.Panel1.Controls.Add(this.ButtonOrdnerWählen);
-            this.SplitContainer1.Size = new System.Drawing.Size(1209, 544);
-            this.SplitContainer1.SplitterDistance = 252;
+            this.SplitContainer1.Size = new System.Drawing.Size(1107, 443);
+            this.SplitContainer1.SplitterDistance = 265;
             this.SplitContainer1.TabIndex = 1;
             // 
-            // textBox3
+            // textBox4
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(12, 424);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(128, 71);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "Kontakt:\r\nMonitoring GmbH\r\nAm-ende-der-Welt 1\r\n12345 Erde\r\nTel: 0123456789\r\n";
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(12, 319);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(215, 106);
+            this.textBox4.TabIndex = 4;
+            this.textBox4.Text = resources.GetString("textBox4.Text");
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(12, 46);
+            this.textBox2.Location = new System.Drawing.Point(12, 49);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(118, 20);
+            this.textBox2.Size = new System.Drawing.Size(238, 197);
             this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "Blablabla...";
+            this.textBox2.Text = resources.GetString("textBox2.Text");
             // 
             // textBox1
             // 
@@ -97,10 +97,10 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Location = new System.Drawing.Point(12, 13);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 28);
+            this.textBox1.Size = new System.Drawing.Size(215, 30);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Baby Sleep Monitoring\r\n";
             // 
@@ -110,10 +110,12 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1209, 544);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1107, 443);
             this.Controls.Add(this.SplitContainer1);
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.Text = "BabySleepMonitoring";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -132,7 +134,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

@@ -25,8 +25,8 @@ namespace BabySleepMonitoring
 
         private Bitmap cloneImage = null; //Klasse Bitmap: um mit Bildern zu arbeiten, die durch Pixeldaten definiert sind
         public List<Point> eckpunkte = new List<Point>(3);
-        private Bitmap image = null;
-        int Checked = 0;
+        public List<Point> eckpunkteFinal = new List<Point>(4);
+        public List<Point> barcodeEckpunkte = new List<Point>(4);
         private Point m_mouseStart = new Point(0, 0); //Definiton d. Startpunktes der Markierung 
         private Point m_mouseCorrect = new Point(); // neuer Punkt setzen 
         private double xBox = new double(); //Breiten x und Längen y der Box und des Bildes
@@ -57,8 +57,7 @@ namespace BabySleepMonitoring
                 pictureBox1.Image = currentPic;
                 if (pictureBox1.Image != null) //bei nicht vorhandener Markierung, ist die Textbox sichtbar
                 {
-                    textBox1.Visible = true;
-                    ButtonStartMakierung.Visible = true;
+                    textBox1.Visible = true;                   
                     ButtonNeuMakierung.Visible = true;
                                       
                 }
@@ -79,7 +78,12 @@ namespace BabySleepMonitoring
         }
         private void ButtonStart_Click(object sender, EventArgs e) // Funktion, die bei clicken des Startbuttons ausgeführt wird:
         {
+            textBox1.Visible = false;
+            ButtonPause.Visible = true;
             ButtonStart.Enabled = false;
+            ButtonBeenden.Visible = true;
+            ButtonNeuMakierung.Visible = false;
+            ButtonNeustart.Visible = true;
             Start();
         }
         private void check(object sender, EventArgs e) // Funktion, die neues picture in Box einliest, solang im Ordner neue vorhanden sind und gibt alte frei
@@ -90,7 +94,7 @@ namespace BabySleepMonitoring
                 {
                     pictureBox1.Image.Dispose();
                 }
-                TextBox.Text = files[i];  // file in entsprechender TextBox
+                //TextBox.Text = files[i];  // file in entsprechender TextBox
                 if (currentPic != null)  // wenn picture vorhanden 
                 {
                     currentPic.Dispose();  // picture/aktuelle Bitmapinstanz freigeben
@@ -116,7 +120,7 @@ namespace BabySleepMonitoring
                 //    pictureBox1.Refresh();
                 //    ButtonStart.Visible = true;
                 //}
-                Bauchlage(files[i]);
+                QR(files[i]);
                 i++; //hochzählen der Instanzen/files und somit pictures/Images
             }
             else
@@ -124,7 +128,7 @@ namespace BabySleepMonitoring
 
         }
 
-        private void Bauchlage(string file)
+        private void QR(string file)
         {
             resizeImage = new Bitmap(currentPic);
 
@@ -134,21 +138,46 @@ namespace BabySleepMonitoring
 
             if (barcodes.Count() == 0)
             {
-                Alarm("Achtung ausserhalb des definierten Bereichs");
+                Alarm("Achtung QRCode wurde nicht gefunden"+ files[i]);
             }
             else
             {
-                barcodeValue = barcodes[0].Value;
-                barcode = barcodeValue.Split('6');
-                Rand(barcode[1]);
+                if (Rand(barcodes[0]) == true)
+                {
+                    barcodeValue = barcodes[0].Value;
+                    barcode = barcodeValue.Split('6');
+                    Bauchlage(barcode[1]);
+                }
             }          
         }
+        private bool Rand(FoundBarcode barcode)
+        {
+            if (eckpunkteFinal.Count() == 4)
+            {
+                barcodeEckpunkte.Add(new Point(barcode.Rect.X, barcode.Rect.Y));
+                barcodeEckpunkte.Add(new Point(barcode.Rect.X + barcode.Rect.Width, barcode.Rect.Y));
+                barcodeEckpunkte.Add(new Point(barcode.Rect.X + barcode.Rect.Width, barcode.Rect.Y + barcode.Rect.Height));
+                barcodeEckpunkte.Add(new Point(barcode.Rect.X, barcode.Rect.Y + barcode.Rect.Height));
+                int outside = 0;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (outside < 2)
+                    {
+                        if (barcodeEckpunkte[i].X < eckpunkteFinal[0].X || barcodeEckpunkte[i].X > eckpunkteFinal[1].X || barcodeEckpunkte[i].Y < eckpunkteFinal[0].Y || barcodeEckpunkte[i].Y > eckpunkteFinal[3].Y)
+                            outside++;
+                        if (outside == 2)
+                            Alarm("Achtung ausserhalb des Bereichs");
+                    }
+                }
+            }
+            return true;
+        }
 
-        private void Rand(string lage)
+        private void Bauchlage(string lage)
         {
             if(lage == bauchlage)
             {
-                Alarm("Achtung Bauchlage");
+                Alarm("Achtung Bauchlage"+ files[i]);
             }
         }
 
@@ -164,15 +193,15 @@ namespace BabySleepMonitoring
             }           
         }
 
-        private void ButtonStartMakierung_Click(object sender, EventArgs e)
-        {
-            Checked = 1;
-        }
+        //private void ButtonStartMakierung_Click(object sender, EventArgs e)
+        //{
+        //    Checked = 1;
+        //}
 
         //Makierung auf dem Image
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (Checked == 1 && currentPic != null)
+            if (currentPic != null)
             {
                 m_mouseStart = new Point(e.X, e.Y); // Punkt wurde gesetzt an einer Stelle
 
@@ -217,28 +246,31 @@ namespace BabySleepMonitoring
                     pictureBox1.Refresh();
                 }
                 if (eckpunkte.Count == 3) //wenn drei Punkte gesetzt wurden 
-
                 {
-
                     Graphics g = CreateGraphics();
                     g = Graphics.FromImage(cloneImage);
                     Pen p = new Pen(Color.Red, 10);
                     Point point2 = new Point(eckpunkte[1].X, eckpunkte[0].Y);
                     Point point3 = new Point(eckpunkte[1].X, eckpunkte[2].Y);
-                    Point punkt4 = new Point((eckpunkte[0].X), (eckpunkte[2].Y));
+                    Point point4 = new Point((eckpunkte[0].X), (eckpunkte[2].Y));
                     g.DrawLine(p, eckpunkte[0], point2);                        // wird vom ersten zum Zweiten Punkt 
                     g.DrawLine(p, point2, point3);                              //und vom zweiten zum dritten Punkt jeweils eine Linie gezeichnet
-                    g.DrawLine(p, point3, punkt4);                              //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
-                    g.DrawLine(p, punkt4, eckpunkte[0]);                        //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
+                    g.DrawLine(p, point3, point4);                              //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
+                    g.DrawLine(p, point4, eckpunkte[0]);                        //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
 
                     pictureBox1.Image = cloneImage;
 
                     pictureBox1.Refresh();
+
+                    eckpunkteFinal.Add(eckpunkte[0]);
+                    eckpunkteFinal.Add(point2);
+                    eckpunkteFinal.Add(point3);
+                    eckpunkteFinal.Add(point4);
+
+                    textBox1.Visible = false;
                     ButtonStart.Visible = true;
-                    //if (Test != null)
-                    //{
-                    //    Test();
-                    //}
+
+           
                 }
             }
         }
@@ -247,9 +279,10 @@ namespace BabySleepMonitoring
         {
             ButtonStart.Visible = false;
             eckpunkte.Clear(); //vorher gewählte Eckpunkte werden geloescht
-            Checked = 0;
+            eckpunkteFinal.Clear();
             pictureBox1.Image = null;
             pictureBox1.Image = currentPic;
+            textBox1.Visible = true;
         }
         private void BildKoordinatenY()
         {
@@ -264,7 +297,6 @@ namespace BabySleepMonitoring
         {
             if (pictureBox1.Image != null)
             {
-
                 double yFaktor = yBox / yImage; //Verhältnis zwischen Box und Bild als Faktor definieren 
 
                 double ih = yFaktor * yImage; // Bild durch Multiplikation mit dem faktor anpassen 
@@ -322,16 +354,17 @@ namespace BabySleepMonitoring
                     Pen p = new Pen(Color.Red, 10);
                     Point point2 = new Point(eckpunkte[1].X, eckpunkte[0].Y);
                     Point point3 = new Point(eckpunkte[1].X, eckpunkte[2].Y);
-                    Point punkt4 = new Point((eckpunkte[0].X), (eckpunkte[2].Y));
+                    Point point4 = new Point((eckpunkte[0].X), (eckpunkte[2].Y));
                     g.DrawLine(p, eckpunkte[0], point2);                        // wird vom ersten zum Zweiten Punkt 
                     g.DrawLine(p, point2, point3);                              //und vom zweiten zum dritten Punkt jeweils eine Linie gezeichnet
-                    g.DrawLine(p, point3, punkt4);                              //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
-                    g.DrawLine(p, punkt4, eckpunkte[0]);                        //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
+                    g.DrawLine(p, point3, point4);                              //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
+                    g.DrawLine(p, point4, eckpunkte[0]);                        //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
 
                     pictureBox1.Image = cloneImage;
 
                     pictureBox1.Refresh();
                     ButtonStart.Visible = true;
+                    ButtonPause.Visible = true;
                 }
             }
             else
@@ -339,6 +372,11 @@ namespace BabySleepMonitoring
                 ButtonPause.Text = "Pause";
                 timer.Start();
             }
+        }
+
+        private void ButtonBeenden_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace BabySleepMonitoring
 
             //Initalisierung der Funktion nav_Text, welche aus dem UserControl "Ueberpruefen" aufgerufen wird
             //m_Bettrandmakierung.Test += new TestFunction(nav_Text);
+            
         }
 
         //private void nav_Text() //Funktion welche aus dem UserControl "Ueberpruefen" aufgerufen wird

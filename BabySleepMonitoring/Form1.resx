@@ -117,6 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox4.Text" xml:space="preserve">
+    <value>Hinweis: 
+Vorausgesetzt sind korrekte Installation und Anwendung der Komponenten laut Gebrauchsanweisung. 
+
+Die Software befreit Sie nicht von Ihrer Aufsichtspflicht, sondern stellt lediglich eine Unterstützung dar. </value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>Die Software BabySleepMonitoring dient der Schlafüberwachung von Kleinkindern und Erkennung von Gefahrensituationen, um Folgen wie den plötzlichen Kindstod möglichst zu vermeiden. 
+
+
+Bitte wählen Sie zunächst über den Button „erstes Bild“ ein Foto aus, um den zu überprüfenden Bereich sowie Quelle der Fotos festzulegen.  
+
+</value>
+  </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
