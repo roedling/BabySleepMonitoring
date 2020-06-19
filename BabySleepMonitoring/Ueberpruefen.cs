@@ -99,6 +99,7 @@ namespace BabySleepMonitoring
                 {
                     currentPic.Dispose();  // picture/aktuelle Bitmapinstanz freigeben
                 }
+                
                 currentPic = new Bitmap(files[i]); //aktuelles file als neue Bitmapinstnaz/aktuelles picture
                 pictureBox1.Image = currentPic; //neue Instanz/aktuelles picture in Box laden
                 //if (eckpunkte.Count == 3) //wenn drei Punkte gesetzt wurden 
@@ -377,6 +378,22 @@ namespace BabySleepMonitoring
         private void ButtonBeenden_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ButtonNeustart_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+            timer.Dispose();
+            eckpunkteFinal.Clear();
+            eckpunkte.Clear();
+            barcodeEckpunkte.Clear();
+            ButtonNeustart.Visible = false;
+            ButtonPause.Visible = false;
+            ButtonStart.Visible = false;
+            ButtonNeuMakierung.Visible = true;
+            ButtonBeenden.Visible = false;
+            textBox1.Visible = true;
+            ButtonStart.Enabled = true;
         }
     }
 }

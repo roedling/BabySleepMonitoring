@@ -50,12 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bettrandmakierung.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Bettrandmakierung.Designer.cs">
-      <DependentUpon>Bettrandmakierung.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,15 +64,6 @@
     <Compile Include="Ueberpruefen.Designer.cs">
       <DependentUpon>Ueberpruefen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Überprüfung.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Überprüfung.Designer.cs">
-      <DependentUpon>Überprüfung.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Bettrandmakierung.resx">
-      <DependentUpon>Bettrandmakierung.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,9 +78,6 @@
     </Compile>
     <EmbeddedResource Include="Ueberpruefen.resx">
       <DependentUpon>Ueberpruefen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Überprüfung.resx">
-      <DependentUpon>Überprüfung.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

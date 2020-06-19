@@ -62,11 +62,11 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(18, 97);
+            this.textBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(18, 95);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(188, 175);
+            this.textBox1.Size = new System.Drawing.Size(188, 149);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "Zur Festlegung des Bereiches, in welchem sich Ihr Kind befinden darf, ist wie fol" +
     "gt vorzugehen: \r\n\r\n1. Eckpunkt links oben \r\n2. Eckpunkt rechts oben \r\n3. Eckpunk" +
@@ -78,7 +78,7 @@
             // 
             this.ButtonNeuMakierung.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ButtonNeuMakierung.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNeuMakierung.Location = new System.Drawing.Point(37, 304);
+            this.ButtonNeuMakierung.Location = new System.Drawing.Point(42, 264);
             this.ButtonNeuMakierung.Name = "ButtonNeuMakierung";
             this.ButtonNeuMakierung.Size = new System.Drawing.Size(135, 31);
             this.ButtonNeuMakierung.TabIndex = 6;
@@ -118,6 +118,7 @@
             this.ButtonNeustart.Text = "Neustart";
             this.ButtonNeustart.UseVisualStyleBackColor = true;
             this.ButtonNeustart.Visible = false;
+            this.ButtonNeustart.Click += new System.EventHandler(this.ButtonNeustart_Click);
             // 
             // Ueberpruefen
             // 
@@ -134,7 +135,7 @@
             this.Controls.Add(this.ButtonStart);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Ueberpruefen";
-            this.Size = new System.Drawing.Size(859, 494);
+            this.Size = new System.Drawing.Size(859, 453);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
