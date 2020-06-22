@@ -155,6 +155,7 @@ namespace BabySleepMonitoring
         {
             if (eckpunkteFinal.Count() == 4)
             {
+                barcodeEckpunkte.Clear();
                 barcodeEckpunkte.Add(new Point(barcode.Rect.X, barcode.Rect.Y));
                 barcodeEckpunkte.Add(new Point(barcode.Rect.X + barcode.Rect.Width, barcode.Rect.Y));
                 barcodeEckpunkte.Add(new Point(barcode.Rect.X + barcode.Rect.Width, barcode.Rect.Y + barcode.Rect.Height));
@@ -171,6 +172,7 @@ namespace BabySleepMonitoring
                     }
                 }
             }
+            
             return true;
         }
 
@@ -184,7 +186,25 @@ namespace BabySleepMonitoring
 
         private void Alarm(string alarm)
         {
-            timer.Stop();
+            if (eckpunkte.Count == 3) //wenn drei Punkte gesetzt wurden 
+            {
+                cloneImage = (Bitmap)currentPic.Clone();
+                Graphics g = CreateGraphics();
+                g = Graphics.FromImage(cloneImage);
+                Pen p = new Pen(Color.Red, 10);
+                Point point2 = new Point(eckpunkte[1].X, eckpunkte[0].Y);
+                Point point3 = new Point(eckpunkte[1].X, eckpunkte[2].Y);
+                Point point4 = new Point((eckpunkte[0].X), (eckpunkte[2].Y));
+                g.DrawLine(p, eckpunkte[0], point2);                        // wird vom ersten zum Zweiten Punkt 
+                g.DrawLine(p, point2, point3);                              //und vom zweiten zum dritten Punkt jeweils eine Linie gezeichnet
+                g.DrawLine(p, point3, point4);                              //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
+                g.DrawLine(p, point4, eckpunkte[0]);                        //Linie von Punkt 3 nach Punkt 4 wird ergänzt 
+
+                pictureBox1.Image = cloneImage;
+
+                pictureBox1.Refresh();
+                timer.Stop();
+            }
             SoundPlayer splayer = new SoundPlayer(@"C:\Users\Carlotta\Documents\Desktop\Testbild\Alarm.wav");
             splayer.Play();
             DialogResult result = MessageBox.Show(alarm, "Alarm", MessageBoxButtons.OK);
